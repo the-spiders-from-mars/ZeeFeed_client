@@ -1,7 +1,7 @@
 # ZeeFeed_client
 智能博客订阅系统客户端
 
-## 接口定义
+## 服务器通信接口定义
 1. login
 
    接口： /login
@@ -71,3 +71,47 @@
       ​	]
 
       ]
+
+2. Blogs
+
+   name: Blogs
+
+   functions:
+
+   1. all(tagName:string)
+
+      return promise
+
+      [
+
+      ​	{
+
+      ​		id: ID
+
+      ​		logo: url(string)
+
+      ​		title: string
+
+      ​		image: url(string)
+
+      ​		summary: string
+
+      ​	}
+
+      ]
+
+   2. getBlog(id:ID)
+
+      return promise
+
+      {
+
+      ​	title: string
+
+      ​	author: string
+
+      ​	date: Date(string)
+
+      ​	content: string
+
+      }
