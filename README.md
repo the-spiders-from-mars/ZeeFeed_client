@@ -35,8 +35,8 @@
 接口： /blog
 方法： GET
 参数： tagName:string
-返回： [oneJson,oneJson,...,oneJson]
-        oneJson={
+返回： [oneJson,oneJson,...,oneJson] （时间由近而远）
+        oneJson={
           id: string,
           logo: url(string),
           title: string,
