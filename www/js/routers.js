@@ -13,54 +13,13 @@ angular.module('starter.routers', ['routers.account'])
   $stateProvider
 
   // setup an abstract state for the tabs directive
-    .state('tab', {
-      url: '/tab',
-      abstract: true,
-      templateUrl: 'templates/tabs.html'
-    })
-
-    // Each tab has its own nav history stack:
-
-    .state('tab.dash', {
+    .state('dash', {
       url: '/dash',
-      views: {
-        'tab-dash': {
-          templateUrl: 'templates/dash/tab-dash.html',
-          controller: 'DashCtrl'
-        }
-      }
-    })
-
-    .state('tab.chats', {
-      url: '/chats',
-      views: {
-        'tab-chats': {
-          templateUrl: 'templates/tab-chats.html',
-          controller: 'ChatsCtrl'
-        }
-      }
-    })
-    .state('tab.chat-detail', {
-      url: '/chats/:chatId',
-      views: {
-        'tab-chats': {
-          templateUrl: 'templates/chat-detail.html',
-          controller: 'ChatDetailCtrl'
-        }
-      }
-    })
-
-    .state('tab.account', {
-      url: '/account',
-      views: {
-        'tab-account': {
-          templateUrl: 'templates/account/tab-account.html',
-          controller: 'AccountCtrl'
-        }
-      }
+      controller: 'DashCtrl',
+      templateUrl: 'templates/dash/dash.html'
     });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/dash');
+  $urlRouterProvider.otherwise('/dash');
 
 });
