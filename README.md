@@ -55,22 +55,22 @@
 
       [
 
-      ​	[
+    		{
 
-       		headLetter: string
+   ​		headLetter: string
 
-      ​		 tagList: [
+   ​		 tagList: [
 
-      ​			{
-      ​			"tagName" : "",//string
-      ​			"tagCounter" 0,//int
-         			}
+   ​			{
+   ​			"tagName" : "",//string
+   ​			"tagCounter" 0,//int
+      			}
 
-      ​			]
+   ​			]
 
-      ​	]
+   ​		}
 
-      ]
+   ​	]
 
 2. Blogs
 
@@ -78,7 +78,7 @@
 
    functions:
 
-   1. all(tagName:string)
+   1. getBlogs(tagName:string)
 
       return promise
 
@@ -105,6 +105,8 @@
       return promise
 
       {
+
+      ​	id: ID
 
       ​	title: string
 

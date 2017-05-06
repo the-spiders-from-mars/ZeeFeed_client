@@ -1,0 +1,28 @@
+<ion-view view-title="{{tagName}}">
+  <ion-content class="zeefeed-background-grey">
+    <div class="list card" ng-repeat="blog in blogs" ng-click="showBlog(blog.id)">
+      <div class="item item-avatar item-icon-right">
+        <img src="{{blog.logo}}">
+        <h2>
+          {{blog.title}}
+        </h2>
+        <div>
+          <i ng-if="!showsSign[$index]" ng-click="toggleShowsSign($index)"
+             class="icon ion-chevron-down icon-accessory"></i>
+          <i ng-if="showsSign[$index]" ng-click="toggleShowsSign($index)"
+             class="icon ion-chevron-up icon-accessory"></i>
+        </div>
+      </div>
+
+      <div class="item item-body" ng-if="showsSign[$index]">
+        <div class="item item-image">
+          <img src="{{blog.image}}">
+        </div>
+
+        <div>
+          {{blog.summary}}
+        </div>
+      </div>
+  </div>
+  </ion-content>
+</ion-view>

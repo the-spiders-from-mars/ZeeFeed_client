@@ -1,4 +1,4 @@
-angular.module('starter.services', ['service.blog'])
+angular.module('starter.services', ['service.blog','service.tag'])
 
 .factory('Chats', function() {
   // Might use a resource here that returns a JSON array

@@ -17,6 +17,16 @@ angular.module('starter.routers', ['routers.account'])
       url: '/dash',
       controller: 'DashCtrl',
       templateUrl: 'templates/dash/dash.html'
+    })
+    .state('tagDetail', {
+      url: '/tag/:tagName',
+      controller: 'TagCtrl',
+      templateUrl: 'templates/dash/detail.tag.html'
+    })
+    .state('blogDetail', {
+      url: '/blog/:blogId',
+      controller: 'BlogCtrl',
+      templateUrl: 'templates/dash/detail.blog.html'
     });
 
   // if none of the above states are matched, use this as the fallback
