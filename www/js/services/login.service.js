@@ -46,7 +46,7 @@ angular.module('service.login', [])
         return flag;
       },
       getUser: function(){
-        if (localStorage.userName!=undefined){
+        if (localStorage.userName !== ""){
           return {userName:localStorage.userName,userPassword:localStorage.userPassword};
         }else{
           return undefined;

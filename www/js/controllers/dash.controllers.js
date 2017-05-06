@@ -4,7 +4,7 @@
 
 angular.module('ctrl.dash', [])
 
-  .controller('DashCtrl', function($scope, $ionicModal, $timeout, $interval, $state, Tags, Login) {
+  .controller('DashCtrl', function($scope, $sce, $ionicModal, $timeout, $interval, $state, Tags, Login) {
 
     $scope.tags = [];
     Tags.all().then(function (tags) {
@@ -62,14 +62,15 @@ angular.module('ctrl.dash', [])
             $scope.closeLogin();
           }
         },
-        function () {
+        function (ret) {
+          console.log(ret);
           alert("用户名或密码或者网络错误");
         }
       )
     };
     $scope.logout = function () {
-      console.log("Logout:",localStorage.user);
-      localStorage.user = undefined;
+      console.log("Logout:", Login.getUser());
+      localStorage.userName = "";
       $scope.closeInfo();
       $state.go('dash', {}, { reload: true })
     };
@@ -108,12 +109,13 @@ angular.module('ctrl.dash', [])
         console.log('Doing register', $scope.registerData);
         Login.doRegister($scope.loginData.username, $scope.loginData.password1).then(
           function (ret) {
-            if (ret.connection) {
+            if (ret.flag) {
               $scope.closeLogin();
               $scope.closeRegister();
             }
           },
-          function () {
+          function (ret) {
+            console.log(ret);
             alert("用户名重复或网络错误");
           }
         );
@@ -126,7 +128,7 @@ angular.module('ctrl.dash', [])
     }).then(function(modal) {
       $scope.infoModal = modal;
       $scope.user = Login.getUser();
-      console.log($scope.user);
+      console.log("user info", $scope.user);
     });
 
     $scope.closeInfo = function () {
@@ -134,10 +136,10 @@ angular.module('ctrl.dash', [])
     };
 
     $scope.showInfo = function () {
-      console.log(JSON.stringify(Login.getUser()),"\"undefined\"");
-      if (JSON.stringify(Login.getUser()) === "\"undefined\"")
-         $scope.login();
-      else
+      // console.log(JSON.stringify(Login.getUser()),undefined);
+      // if (Login.getUser() === undefined)
+      //    $scope.login();
+      // else
         $scope.infoModal.show();
     };
 
@@ -192,5 +194,11 @@ angular.module('ctrl.dash', [])
     }
 
     //Buuble Chart END
+
+
+    //Timeline start
+    // FAKE CONTENT FOR THE DEMO
+    $scope.timeline = $sce.trustAsResourceUrl("templates/account/timeline.html");
+    // timeline end
 
   });

@@ -67,7 +67,7 @@ p {
 }
 
 .my-small-margin-top {
-  margin-top: 10px;
+  margin-top: 2em;
 }
 
 .my-tiny-margin-top {
@@ -215,10 +215,10 @@ p {
 
 .my-portrait-text {
   max-width: 11em;
-  color: white;
+  color: gray;
   font-weight: bold;
-  font-size: 12pt;
-  text-shadow: 2px 0 1px black;
+  font-size: 16pt;
+  text-shadow: #803690;
   position: relative;
   top: -28px;
   right: 30px;
