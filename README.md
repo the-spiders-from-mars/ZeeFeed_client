@@ -2,12 +2,13 @@
 智能博客订阅系统客户端
 
 ## 服务器通信接口定义
+
 1. login
 ```
-接口： /login
+接口： /login/{userName}/{userPassword}
 方法： GET
-参数： userName:string
-       userPassword:string
+参数： (url解析参数)userName:string
+       (url解析参数)userPassword:string
 返回： true | false :boolean
 ```
 2. register
