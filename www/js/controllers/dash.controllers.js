@@ -4,13 +4,19 @@
 
 angular.module('ctrl.dash', [])
 
-  .controller('DashCtrl', function($scope, $ionicModal, Tags, Login) {
+  .controller('DashCtrl', function($scope, $ionicModal, $timeout, $state, Tags, Login) {
     $scope.tags = [];
     Tags.all().then(function (tags) {
       $scope.tags = tags;
     },function (error) {
       alert(error)
     });
+
+    $scope.doRefresh = function () {
+      $timeout(function() {
+        $scope.$broadcast('scroll.refreshComplete');
+      }, 1000);
+    };
 
     // Form data for the login modal
     $scope.loginData = {};
@@ -60,4 +66,8 @@ angular.module('ctrl.dash', [])
       // else
         $scope.infoModal.show();
     };
+
+    $scope.goSettings = function () {
+      $state.go('settings');
+    }
   });

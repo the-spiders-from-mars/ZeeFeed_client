@@ -27,6 +27,21 @@ angular.module('starter.routers', ['routers.account'])
       url: '/blog/:blogId',
       controller: 'BlogCtrl',
       templateUrl: 'templates/blog/detail.blog.html'
+    })
+    .state('blogOrigin', {
+      url: '/origin/:blogId',
+      controller: 'OriginBlogCtrl',
+      templateUrl: 'templates/blog/origin.blog.html'
+    })
+    .state('settings', {
+      url: '/settings',
+      controller: 'SettingCtrl',
+      templateUrl: 'templates/account/settings.html'
+    })
+    .state('provider', {
+      url: '/provider',
+      controller: 'ProviderCtrl',
+      templateUrl: 'templates/account/providers.html'
     });
 
   // if none of the above states are matched, use this as the fallback

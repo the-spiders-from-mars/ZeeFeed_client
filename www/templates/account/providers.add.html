@@ -1,0 +1,25 @@
+<ion-modal-view>
+  <ion-header-bar class="bar-dark">
+    <h1 class="title">Add Provider</h1>
+    <button class="padding button my-no-border" ng-click="closeAddProvider()">
+      <i class="icon ion-android-close"></i>
+    </button>
+  </ion-header-bar>
+  <ion-content>
+    <form ng-submit="doAddProvider()">
+      <div class="list">
+        <label class="item item-input">
+          <span class="input-label">Name</span>
+          <input type="text" ng-model="newProvider.name">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Address</span>
+          <input type="text" ng-model="newProvider.address">
+        </label>
+        <label class="item">
+          <button class="button button-block button-positive" type="submit">Add</button>
+        </label>
+      </div>
+    </form>
+  </ion-content>
+</ion-modal-view>

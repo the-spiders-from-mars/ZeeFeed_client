@@ -1,0 +1,10 @@
+<ion-view view-title="Settings">
+  <ion-content class="zeefeed-background-grey">
+    <ion-list>
+      <ion-item href="{{setting.url}}" class="item-icon-right" ng-repeat="setting in settings">
+        <h2>{{setting.name}}</h2>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

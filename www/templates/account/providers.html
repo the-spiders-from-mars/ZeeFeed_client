@@ -1,0 +1,24 @@
+<ion-view view-title="Providers">
+  <ion-nav-bar class="bar-dark">
+    <ion-nav-back-button>
+    </ion-nav-back-button>
+    <ion-nav-buttons side="right">
+      <button class="padding button my-no-border" ng-click="addProvider()">
+        <i class="icon ion-android-add"></i>
+      </button>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content class="zeefeed-background-grey">
+    <ion-list>
+      <ion-item class="item-toggle" ng-repeat="provider in providers">
+        {{provider.name}}
+        <label class="toggle toggle-balanced">
+          <input type="checkbox" ng-model="provider.enable">
+          <div class="track">
+            <div class="handle"></div>
+          </div>
+        </label>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

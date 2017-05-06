@@ -1,5 +1,6 @@
 <ion-view view-title="{{tagName}}">
   <ion-content class="zeefeed-background-grey">
+    <ion-refresher spinner="lines" on-refresh="doRefresh()"></ion-refresher>
     <div class="list card" ng-repeat="blog in blogs">
       <div class="item item-avatar item-icon-right">
         <img src="{{blog.logo}}" ng-click="showBlog(blog.id)">

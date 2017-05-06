@@ -25,6 +25,7 @@ angular.module('service.blog', [])
 
   var blog = {
     id: 1,
+    url: "http://m.blog.csdn.net/article/details?id=70224422",
     title: "最大辛文",
     author: "N4A",
     date: "2017-05-06",
