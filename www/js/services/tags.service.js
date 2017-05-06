@@ -21,11 +21,22 @@ angular.module('service.tag', [])
           tagList: [
             {
               tagName: "Code",
-              tagCounter: 2433
+              tagCounter: 243
             }
           ]
         }
     ];
+    for (var i=0; i < 50; i++) {
+      tags.push({
+        headLetter: "A",
+        tagList: [
+          {
+            tagName: "Adobe",
+            tagCounter: Math.round(Math.random()*600)
+          }
+        ]
+      })
+    }
 
 
     return {

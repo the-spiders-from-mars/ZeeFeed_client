@@ -9,6 +9,16 @@ angular.module('ctrl.dash', [])
     $scope.tags = [];
     Tags.all().then(function (tags) {
       $scope.tags = tags;
+      $scope.maxCounter=function(){
+        var maxCounter=1;
+        for(var i = 0; i < $scope.tags.length; i++) {
+          for (var j = 0; j < $scope.tags[i].tagList.length; j++)
+            if (maxCounter<$scope.tags[i].tagList[j].tagCounter){
+              maxCounter=$scope.tags[i].tagList[j].tagCounter;
+            }
+        }
+        return maxCounter;
+      }();
     },function (error) {
       alert(error)
     });
@@ -94,38 +104,8 @@ angular.module('ctrl.dash', [])
       }
     };
 
-    $scope.tags= [
-      {
-        headLetter: "A",
-        tagList: [
-          {
-            tagName: "Adobe",
-            tagCounter: 243
-          }
-        ]
-      },
-      {
-        headLetter: "C",
-        tagList: [
-          {
-            tagName: "Code",
-            tagCounter: 2433
-          }
-        ]
-      }
-    ];
 
-    var maxCounter=function(){
-      var maxCounter=0;
-      for(var i = 0; i < $scope.tags.length; i++) {
-        for (var j = 0; j < $scope.tags[i].tagList.length; j++)
-        if (maxCounter<$scope.tags[i].tagList[j].tagCounter){
-          maxCounter=$scope.tags[i].tagList[j].tagCounter;
-        }
-      }
-      return maxCounter;
-    }();
-    createChart();
+    // createChart();
     $interval(createChart ,2000);
 
     function createChart () {
@@ -138,17 +118,6 @@ angular.module('ctrl.dash', [])
             r: generateRadius($scope.tags[i].tagList[j].tagCounter)
           }]);
       }
-      return function(){
-        var c=0;
-        for(var i = 0; i < $scope.tags.length; i++) {
-          for (var j = 0; j < $scope.tags[i].tagList.length; j++)
-            $scope.data[c++]=([{
-              x: randomScalingFactor(),
-              y: randomScalingFactor(),
-              r: generateRadius($scope.tags[i].tagList[j].tagCounter)
-            }]);
-        }
-      }
     }
 
     function randomScalingFactor () {
@@ -156,9 +125,9 @@ angular.module('ctrl.dash', [])
     }
 
     function generateRadius (counter) {
-      return counter/maxCounter*(Math.random() * 10 + 20);
+      return counter/$scope.maxCounter*(Math.random() * 10 + 20);
     }
 
     //Buuble Chart END
-    
+
   });
