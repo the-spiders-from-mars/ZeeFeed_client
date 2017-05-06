@@ -4,6 +4,6 @@
 
 angular.module('service.blog', [])
 
-.factory('Blogs', function() {
+  .factory('Blogs', function() {
 
-});
+  });
