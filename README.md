@@ -40,3 +40,34 @@
    ​		"tagName" : "",//string
    ​		"tagCounter" 0,//int
       	}
+
+## service 数据定义
+
+1. Tags
+
+   name: Tags
+
+   functions:
+
+   1. all()
+
+      return promise
+
+      [
+
+      ​	[
+
+       		headLetter: string
+
+      ​		 tagList: [
+
+      ​			{
+      ​			"tagName" : "",//string
+      ​			"tagCounter" 0,//int
+         			}
+
+      ​			]
+
+      ​	]
+
+      ]
