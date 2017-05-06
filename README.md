@@ -25,10 +25,10 @@
 方法： GET
 参数： userName:string
 返回： [oneJson,oneJson,...,oneJson]
-       oneJson={
-        tagName:string,
-        tagCounter:int
-       }
+        oneJson={
+          tagName:string,
+          tagCounter:int
+        }
 ```
 4.blog (list)
 ```
@@ -36,14 +36,26 @@
 方法： GET
 参数： tagName:string
 返回： [oneJson,oneJson,...,oneJson]
-       oneJson={
-        tagName:string,
-        tagCounter:int
-       }
+        oneJson={
+          id: string,
+          logo: url(string),
+          title: string,
+          image: url(string)(optional代表性的图片),
+          summary: string
+        }
 ```
 5.blog
 ```
-
+接口： /blog/{blogId}
+方法： GET
+参数： 无
+返回：   {
+          id: string,
+          title: string,
+          author: string,
+          date: Date(string),
+          content: string
+         }
 ```
 ## service 数据定义
 
