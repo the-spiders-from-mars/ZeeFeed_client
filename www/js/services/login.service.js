@@ -15,10 +15,8 @@ angular.module('service.login', [])
         $http({method:"GET",url:loginUrl}).then(function(ret){
           flag=ret.data;
           if (ret.data){
-            localStorage.user={
-              userName:userName,
-              userPassword:userPassword
-            };
+            localStorage.userName=userName;
+            localStorage.userPassword=userName;
             deferred.resolve({flag:true,connection:true});
           }else{
             deferred.reject({flag:false,connection:true});
@@ -33,10 +31,8 @@ angular.module('service.login', [])
         var registerUrl=Urls.register();
         $http.post(registerUrl,{userName:userName,userPassword:userPassword}).then(function(ret){
           if (ret.data){
-            localStorage.user={
-              userName:userName,
-              userPassword:userPassword
-            };
+            localStorage.userName=userName;
+            localStorage.userPassword=userName;
             deferred.resolve({flag:true,connection:true});
           }else{
             deferred.reject({flag:false,connection:true});
@@ -50,8 +46,8 @@ angular.module('service.login', [])
         return flag;
       },
       getUser: function(){
-        if (localStorage.user!=undefined){
-          return localStorage.user;
+        if (localStorage.userName!=undefined){
+          return {userName:localStorage.userName,userPassword:localStorage.userPassword};
         }else{
           return {userName:"default",userPassword:"default"};
         }
