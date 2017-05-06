@@ -19,7 +19,7 @@
        userPassword:string
 返回： true | false :boolean
 ```
-3. tag
+3. tag (list)
 ```
 接口： /tag
 方法： GET
@@ -27,84 +27,62 @@
 返回： [oneJson,oneJson,...,oneJson]
        oneJson={
         tagName:string,
-        tagCounter:int,
+        tagCounter:int
        }
 ```
+4.blog (list)
+```
+接口： /blog
+方法： GET
+参数： tagName:string
+返回： [oneJson,oneJson,...,oneJson]
+       oneJson={
+        tagName:string,
+        tagCounter:int
+       }
+```
+5.blog
+```
 
+```
 ## service 数据定义
 
 1. Tags
 ```
-   name: Tags
+name: Tags
+functions:
 
-   functions:
-
-   1. all()
-
-      return promise
-
-      [
-
-       	{
-
-      ​	headLetter: string
-
-      ​	 tagList: [
-
-      ​		{
-      ​		"tagName" : "",//string
-      ​		"tagCounter" 0,//int
-      			}
-
-      ​		]
-
-      ​	}
-
-      ​]
+  1. all()
+    return promise
+    [{
+      headLetter: string
+      tagList: [{
+        tagName:string,
+        tagCounter:int
+      }]
+    }]
 ```
 2. Blogs
 ```
    name: Blogs
-
    functions:
-
    1. getBlogs(tagName:string)
-
       return promise
-
-      [
-
-      	{
-
-      		id: ID
-
-      		logo: url(string)
-
-      		title: string
-
-      		image: url(string)
-
-      		summary: string
-
-      	}
-
-      ]
+      [{
+        id: ID
+        logo: url(string)
+        title: string
+        image: url(string)
+        summary: string
+      }]
 
    2. getBlog(id:ID)
-
       return promise
-
       {
-
-      	id: ID
-
-      	title: string
-
-      	author: string
-
-      	date: Date(string)
-
-      	content: string
-
+        id: ID
+        title: string
+        author: string
+        date: Date(string)
+        content: string
       }
 ```
