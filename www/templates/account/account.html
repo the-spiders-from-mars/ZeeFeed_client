@@ -16,10 +16,10 @@
       <div class="my-float-right my-portrait-square-outside">
         <img ng-src="img/ben.png" class="my-portrait-square-inside">
       </div>
-      <p class="zeefeed-float-right my-portrait-text">N4A</p>
+      <p class="zeefeed-float-right my-portrait-text">{{user.userName}}</p>
     </div>
     <div class="text-center padding">
-      <button class="button button-block button-assertive" ng-click="closeInfo()">Logout</button>
+      <button class="button button-block button-assertive" ng-click="logout()">Logout</button>
     </div>
   </ion-content>
 

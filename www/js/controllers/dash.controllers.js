@@ -30,7 +30,10 @@ angular.module('ctrl.dash', [])
     };
 
     // Form data for the login modal
-    $scope.loginData = {};
+    $scope.loginData = {
+      username: "",
+      password: ""
+    };
 
     // Create the login modal that we will use later
     $ionicModal.fromTemplateUrl('templates/account/login.html', {
@@ -53,11 +56,68 @@ angular.module('ctrl.dash', [])
     $scope.doLogin = function() {
       console.log('Doing login', $scope.loginData);
 
-      // Simulate a login delay. Remove this and replace with your login
-      // code if using a login system
-      $timeout(function() {
-        $scope.closeLogin();
-      }, 1000);
+      Login.doLogin($scope.loginData.username, $scope.loginData.password).then(
+        function (ret) {
+          if (ret.connection) {
+            $scope.closeLogin();
+          }
+        },
+        function () {
+          alert("用户名或密码或者网络错误");
+        }
+      )
+    };
+    $scope.logout = function () {
+      console.log("Logout:",localStorage.user);
+      localStorage.user = undefined;
+      $scope.closeInfo();
+      $state.go('dash', {}, { reload: true })
+    };
+
+    $scope.registerData = {
+      username: "",
+      password1: "",
+      password2: ""
+    };
+    // Create the register modal that we will use later
+    $ionicModal.fromTemplateUrl('templates/account/register.html', {
+      scope: $scope
+    }).then(function(modal) {
+      $scope.registerModal = modal;
+    });
+
+    // Triggered in the register modal to close it
+    $scope.closeRegister = function() {
+      $scope.registerModal.hide();
+    };
+
+    // Open the register modal
+    $scope.register = function() {
+      $scope.registerModal.show();
+    };
+
+    // Perform the register action when the user submits the login form
+    $scope.doRegister = function() {
+      if ($scope.registerData.password2 !== $scope.registerData.password1) {
+        alert("密码不一致");
+      }
+      else if ($scope.registerData.username === "" || $scope.registerData.password1 === ""){
+
+      }
+      else {
+        console.log('Doing register', $scope.registerData);
+        Login.doRegister($scope.loginData.username, $scope.loginData.password1).then(
+          function (ret) {
+            if (ret.connection) {
+              $scope.closeLogin();
+              $scope.closeRegister();
+            }
+          },
+          function () {
+            alert("用户名重复或网络错误");
+          }
+        );
+      }
     };
 
     // Create the login modal that we will use later
@@ -65,6 +125,8 @@ angular.module('ctrl.dash', [])
       scope: $scope
     }).then(function(modal) {
       $scope.infoModal = modal;
+      $scope.user = Login.getUser();
+      console.log($scope.user);
     });
 
     $scope.closeInfo = function () {
@@ -72,9 +134,10 @@ angular.module('ctrl.dash', [])
     };
 
     $scope.showInfo = function () {
-      // if (Login.getUser() === undefined)
-      //   $scope.login();
-      // else
+      console.log(JSON.stringify(Login.getUser()),"\"undefined\"");
+      if (JSON.stringify(Login.getUser()) === "\"undefined\"")
+         $scope.login();
+      else
         $scope.infoModal.show();
     };
 

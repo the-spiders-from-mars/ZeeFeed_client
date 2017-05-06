@@ -1,1 +1,1 @@
-angular.module('starter.controllers', ['ctrl.dash', 'ctrl.blog']);
+angular.module('starter.controllers', ['ctrl.dash', 'ctrl.blog', 'ctrl.account']);

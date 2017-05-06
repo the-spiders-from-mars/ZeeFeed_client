@@ -53,7 +53,7 @@ angular.module('service.login', [])
         if (localStorage.user!=undefined){
           return localStorage.user;
         }else{
-          return {userName:"default",userPassword:"default"};
+          return undefined;
         }
       }
     }
