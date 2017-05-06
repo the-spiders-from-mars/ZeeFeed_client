@@ -3,10 +3,9 @@
 
 接口： /tag  
 方法： GET  
-参数： userName  
+参数： userName//string  
 返回： [oneJson,oneJson,...,oneJson]  
       oneJson={  
-        "tagId" : 0,//int  
         "tagName" : "",//string  
         "tagCounter" 0,//int  
       }  
