@@ -7,7 +7,7 @@ angular.module('service.url', [])
   .factory('Urls', function() {
 
     var urls= {
-      hp: "http://127.0.0.1:8080",
+      hp: "http://zippyserver-nonreprehensible-hardboard.mybluemix.net/api",
       login: "login",
       register: "register",
       tag: "tag",
