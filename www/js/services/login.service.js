@@ -31,7 +31,7 @@ angular.module('service.login', [])
       doRegister: function(userName,userPassword){
         var deferred=$q.defer();
         var registerUrl=Urls.register();
-        $http({method:"POST",url:registerUrl},{userName:userName,userPassword:userPassword}).then(function(ret){
+        $http.post(registerUrl,{userName:userName,userPassword:userPassword}).then(function(ret){
           if (ret.data){
             localStorage.user={
               userName:userName,
