@@ -9,7 +9,10 @@
   </ion-header-bar>
   <ion-content>
     <div class="my-big-margin-bottom">
-      <img ng-src="http://ionicframework.com/img/docs/delorean.jpg" class="my-full-width">
+      <!--<img ng-src="http://ionicframework.com/img/docs/delorean.jpg" class="my-full-width">-->
+      <canvas class="my-full-width chart chart-bubble" chart-data="data"
+              chart-colors="colors" chart-options="options" chart-series="series"></canvas>
+      </canvas>
       <div class="my-float-right my-portrait-square-outside">
         <img ng-src="img/ben.png" class="my-portrait-square-inside">
       </div>

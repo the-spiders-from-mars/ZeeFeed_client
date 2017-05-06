@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'starter.routers', 'ion-floating-menu'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'starter.routers', 'ion-floating-menu', 'chart.js'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -39,4 +39,11 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
   //$ionicConfigProvider.platform.ios.views.transition('ios');
   $ionicConfigProvider.platform.android.views.transition('android');
 
-});
+})
+
+.config(['ChartJsProvider', function (ChartJsProvider) {
+  'use strict';
+  ChartJsProvider.setOptions({
+    tooltips: { enabled: false }
+  });
+}]);
