@@ -4,7 +4,7 @@
 
 angular.module('service.tag', [])
 
-  .factory('Tags', function($q,$http,Login) {
+  .factory('Tags', function($q,$http,Login,Urls) {
 
     var tags;
 

@@ -50,7 +50,11 @@ angular.module('service.login', [])
         return flag;
       },
       getUser: function(){
-        return localStorage.user;
+        if (localStorage.user!=undefined){
+          return localStorage.user;
+        }else{
+          return {userName:"default",userPassword:"default"};
+        }
       }
     }
   });
