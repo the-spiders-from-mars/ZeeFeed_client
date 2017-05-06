@@ -38,6 +38,7 @@ body： userName:string
        userName:string
 返回： [oneJson,oneJson,...,oneJson] （时间由近而远）
         oneJson={
+          _id: string,
           title: string,
           content: string(webcontent),
           date: string,
