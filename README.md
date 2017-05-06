@@ -15,7 +15,7 @@
 ```
 接口： /register
 方法： POST
-参数： userName:string
+body： userName:string
        userPassword:string
 返回： true | false :boolean
 ```
@@ -59,6 +59,13 @@
           url:string,
           logo:string
         }
+```
+6.source （更新用户订阅的源）
+```
+接口： /source
+方法： POST
+body： {userName:string,sources:[string(url),string(url)]}
+返回： true | false :boolean
 ```
 ## service 数据定义
 
