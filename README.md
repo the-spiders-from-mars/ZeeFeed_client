@@ -5,10 +5,10 @@
 
 1. login
 ```
-接口： /login/{userName}/{userPassword}
+接口： /login
 方法： GET
-参数： (url解析参数)userName:string
-       (url解析参数)userPassword:string
+参数： userName:string
+       userPassword:string
 返回： true | false :boolean
 ```
 2. register
