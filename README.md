@@ -3,7 +3,7 @@
 
 ## 服务器通信接口定义
 
-1. login
+1.login
 ```
 接口： /login
 方法： GET
@@ -11,7 +11,7 @@
        userPassword:string
 返回： true | false :boolean
 ```
-2. register
+2.register
 ```
 接口： /register
 方法： POST
@@ -19,7 +19,7 @@
        userPassword:string
 返回： true | false :boolean
 ```
-3. tag (list)
+3.tag (list)
 ```
 接口： /tag
 方法： GET
