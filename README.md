@@ -19,7 +19,7 @@
        userPassword:string
 返回： true | false :boolean
 ```
-3.tag (list)
+3.tag (tag的列表)
 ```
 接口： /tag
 方法： GET
@@ -30,32 +30,35 @@
           tagCounter:int
         }
 ```
-4.blog (list)
+4.blog (博文列表)
 ```
 接口： /blog
 方法： GET
 参数： tagName:string
+       userName:string
 返回： [oneJson,oneJson,...,oneJson] （时间由近而远）
         oneJson={
-          id: string,
-          logo: url(string),
           title: string,
-          image: url(string)(optional代表性的图片),
-          summary: string
+          content: string(webcontent),
+          date: string,
+          author: string,
+          logo: string,
+          tags:[string,...],
+          summary: string,
+          link: string(url)
         }
 ```
-5.blog
+5.source （用户订阅的所有源）
 ```
-接口： /blog/{blogId}
+接口： /source
 方法： GET
-参数： 无
-返回：   {
-          id: string,
-          title: string,
-          author: string,
-          date: Date(string),
-          content: string
-         }
+参数： userName:string
+返回： [oneJson,oneJson,...,oneJson]
+        oneJson={
+          name:string,
+          url:string,
+          logo:string
+        }
 ```
 ## service 数据定义
 
