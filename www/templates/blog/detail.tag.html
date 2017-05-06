@@ -1,9 +1,9 @@
 <ion-view view-title="{{tagName}}">
   <ion-content class="zeefeed-background-grey">
-    <div class="list card" ng-repeat="blog in blogs" ng-click="showBlog(blog.id)">
+    <div class="list card" ng-repeat="blog in blogs">
       <div class="item item-avatar item-icon-right">
-        <img src="{{blog.logo}}">
-        <h2>
+        <img src="{{blog.logo}}" ng-click="showBlog(blog.id)">
+        <h2 ng-click="showBlog(blog.id)">
           {{blog.title}}
         </h2>
         <div>
@@ -14,7 +14,7 @@
         </div>
       </div>
 
-      <div class="item item-body" ng-if="showsSign[$index]">
+      <div class="item item-body" ng-if="showsSign[$index]" ng-click="showBlog(blog.id)">
         <div class="item item-image">
           <img src="{{blog.image}}">
         </div>

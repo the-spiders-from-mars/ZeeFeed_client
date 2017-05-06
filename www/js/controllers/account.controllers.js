@@ -9,4 +9,5 @@ angular.module('ctrl.account', [])
   $scope.settings = {
     enableFriends: true
   };
+
 });

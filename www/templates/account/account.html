@@ -1,9 +1,23 @@
-<ion-view view-title="Account">
+<ion-modal-view>
+  <ion-header-bar class="bar-dark">
+    <h2 class="title">Account</h2>
+    <div class="buttons">
+      <button class="padding button my-no-border" ng-click="closeInfo()">
+        <i class="icon ion-android-close"></i>
+      </button>
+    </div>
+  </ion-header-bar>
   <ion-content>
-    <ion-list>
-    <ion-toggle  ng-model="settings.enableFriends">
-        Enable Friends
-    </ion-toggle>
-    </ion-list>
+    <div class="my-big-margin-bottom">
+      <img ng-src="http://ionicframework.com/img/docs/delorean.jpg" class="my-full-width">
+      <div class="my-float-right my-portrait-square-outside">
+        <img ng-src="img/ben.png" class="my-portrait-square-inside">
+      </div>
+      <p class="zeefeed-float-right my-portrait-text">N4A</p>
+    </div>
+    <div class="text-center padding">
+      <button class="button button-block button-assertive" ng-click="closeInfo()">Logout</button>
+    </div>
   </ion-content>
-</ion-view>
+
+</ion-modal-view>

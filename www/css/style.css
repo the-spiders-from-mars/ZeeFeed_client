@@ -12,3 +12,230 @@
 .zeefeed-float-right{
   float: right;
 }
+p {
+  margin-bottom: 5px;
+}
+
+.my-white-background {
+  background-color: white;
+}
+
+.my-gray-background {
+  background-color: #ececec;
+}
+
+.my-computer-view {
+  max-width: 420px;
+  margin:0 auto;
+}
+
+.my-red {
+  color: red;
+}
+
+.my-midnightblue {
+  color: #595990;
+}
+
+.my-gray {
+  color: gray;
+}
+
+.my-bold {
+  font-weight: bold;
+}
+
+.my-hide{
+  display:none;
+}
+
+.my-textarea {
+  resize: none;
+  width: 100%;
+}
+
+.my-min-height {
+  min-height: 70px;
+}
+
+.my-no-margin {
+  margin:0;
+}
+
+.my-small-margin {
+  margin: 10px;
+}
+
+.my-small-margin-top {
+  margin-top: 10px;
+}
+
+.my-tiny-margin-top {
+  margin-top: 2px;
+}
+
+.my-small-margin-bottom {
+  margin-bottom: 10px;
+}
+
+.my-margin-right {
+  margin-right: 1.5em;
+}
+
+.my-big-margin-bottom {
+  margin-bottom: 5em;
+}
+
+.my-margin-left-newscontent {
+  margin-left: 55px;
+}
+
+.my-no-padding {
+  padding: 0;
+}
+
+.my-a-item-content-small-padding>a.item-content {
+  padding: 10px;
+}
+
+.my-padding {
+  padding: 1.5em;
+}
+
+.my-tiny-padding {
+  padding: 5px;
+}
+
+.my-small-padding {
+  padding: 10px;
+}
+
+.my-small-padding-left {
+  padding-left: 10px;
+}
+
+.my-no-padding-bottom{
+  padding-bottom: 0;
+}
+
+.my-small-padding-up-bottom {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.my-no-border {
+  border: 0;
+}
+
+.my-no-border-left-right {
+  border-left: 0;
+  border-right: 0;
+}
+
+.my-border-bottom {
+  border-bottom:1px solid lightgray;
+}
+
+.my-button-small {
+  line-height: 1.8em;
+  padding-left: 0.4em;
+  padding-right: 0.4em;
+  min-height: 0;
+  min-width: 0;
+}
+
+.my-button-balanced-weak {
+  color: white;
+  background-color: #80f080;
+}
+
+.my-button-positive-weak {
+  color: white;
+  background-color: #b0b0ff;
+}
+
+.my-text-align-left {
+  text-align: left;
+}
+
+.my-text-align-center {
+  text-align: center;
+}
+
+.my-text-small {
+  font-size: 10pt;
+}
+
+.my-text-big {
+  font-size: 14pt;
+  font-weight: bold;
+}
+
+.my-full-width {
+  width: 100%;
+}
+
+.my-float-right {
+  float: right;
+}
+
+.my-float-left {
+  float: left;
+}
+
+.my-portrait-circle {
+  background-color: white;
+  border-radius: 50%;
+  height: 45px;
+  width: 45px;
+}
+
+.my-portrait-small-square {
+  height: 45px;
+  width: 45px;
+}
+
+.my-portrait-square-inside {
+  height: 60px;
+  width: 60px;
+  border:2px solid white;
+}
+
+.my-portrait-square-outside {
+  border:1px solid lightgray;
+  width:62px;
+  height:62px;
+  position: relative;
+  top: -45px;
+  right: 15px;
+}
+.my-logout-margin-left {
+  margin-left: 50px;
+}
+
+.my-portrait-text {
+  max-width: 11em;
+  color: white;
+  font-weight: bold;
+  font-size: 12pt;
+  text-shadow: 2px 0 1px black;
+  position: relative;
+  top: -28px;
+  right: 30px;
+}
+
+.my-square {
+  border-radius: 3px;
+  width: 95px;
+  height: 95px;
+  padding: 5px;
+  margin: 5px;
+}
+
+.my-topic-name {
+  width: 80%;
+  font-weight: bold;
+  font-size: 14pt;
+  text-shadow: 1px 0 1px gray;
+}
+
