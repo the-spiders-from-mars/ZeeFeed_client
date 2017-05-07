@@ -11,35 +11,18 @@ angular.module('service.login', [])
     return {
       doLogin: function(userName,userPassword){
         var deferred=$q.defer();
-        var loginUrl=Urls.login(userName,userPassword);
-        $http({method:"GET",url:loginUrl}).then(function(ret){
-          flag=ret.data;
-          if (ret.data){
-            localStorage.userName=userName;
-            localStorage.userPassword=userName;
-            deferred.resolve({flag:true,connection:true});
-          }else{
-            deferred.reject({flag:false,connection:true});
-          }
-        },function(){
-          deferred.reject({flag:false,connection:false});
-        });
+        localStorage.userName=userName;
+        localStorage.userPassword=userPassword;
+        flag={flag:true,connection:true};
+        deferred.resolve({flag:true,connection:true});
         return deferred.promise;
       },
       doRegister: function(userName,userPassword){
         var deferred=$q.defer();
-        var registerUrl=Urls.register();
-        $http.post(registerUrl,{userName:userName,userPassword:userPassword}).then(function(ret){
-          if (ret.data){
-            localStorage.userName=userName;
-            localStorage.userPassword=userName;
-            deferred.resolve({flag:true,connection:true});
-          }else{
-            deferred.reject({flag:false,connection:true});
-          }
-        },function(){
-          deferred.reject({flag:false,connection:false});
-        });
+        localStorage.userName=userName;
+        localStorage.userPassword=userPassword;
+        flag={flag:true,connection:true};
+        deferred.resolve({flag:true,connection:true});
         return deferred.promise;
       },
       getFlag: function(){

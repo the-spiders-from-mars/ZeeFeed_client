@@ -4,13 +4,13 @@
 
 angular.module('service.tag', [])
 
-  .factory('Tags', function($q,$http,Login,Urls) {
+  .factory('Tags', function($q,$http,Login,Urls,Offline) {
 
     var tags,rawTags;
 
     function raw2Tags(raw){
       raw.sort(function(a,b){
-        return(a.name.localeCompare(b.name));
+        return(a.tagName.localeCompare(b.tagName));
       });
       raw.push({tagName:"$end",tagCounter:0});
       tags=[];
@@ -36,17 +36,12 @@ angular.module('service.tag', [])
           deferred.resolve(tags);
           return deferred.promise;
         }
-        var tagUrl=Urls.tag(Login.getUser().userName);
-        $http({method:"GET",url:tagUrl}).then(function(ret){
-          rawTags=ret.data;
-          rawTags.sort(function(a,b){
-            return(b.tagCounter-a.tagCounter);
-          });
-          raw2Tags(ret.data);
-          deferred.resolve(tags);
-        },function(){
-          deferred.reject();
+        rawTags=Offline.tag();
+        rawTags.sort(function(a,b){
+          return(b.tagCounter-a.tagCounter);
         });
+        raw2Tags(rawTags);
+        deferred.resolve(tags);
         return deferred.promise;
       },
       raw: function() {

@@ -218,7 +218,7 @@ angular.module('ctrl.dash', [])
     }
 
     function generateRadius (counter) {
-      return Math.round(counter/$scope.maxCounter*(Math.random() * 10 + 30));
+      return counter/$scope.maxCounter*(Math.random() * 10 + 20);
     }
 
     //Buuble Chart END

@@ -4,7 +4,7 @@
 
 angular.module('service.blog', [])
 
-  .factory('Blogs', function($q,$http,Login,Urls) {
+  .factory('Blogs', function($q,$http,Login,Urls,Offline) {
 
     var blogs;
 
@@ -15,17 +15,15 @@ angular.module('service.blog', [])
           deferred.resolve(blogs);
           return deferred.promise;
         }
-        var blogUrl=Urls.blog(tagName,Login.getUser().userName);
-        $http({method:"GET",url:blogUrl}).then(function(ret){
-          blogs=ret.data;
-          for (var i=0;i<blogs.length;i++){
+        blogs=Offline.blog(tagName);
+        for (var i=0;i<blogs.length;i++){
+          blogs[i].id=i;
+          if (blogs[i]["_id"]!=undefined)
             blogs[i].id=blogs[i]["_id"];
-            blogs[i].image="img/100.png";
-          }
-          deferred.resolve(blogs);
-        },function(){
-          deferred.reject();
-        });
+          blogs[i].url=blogs[i].link;
+          blogs[i].image="img/10"+Math.round(Math.random()*5)+".png";
+        }
+        deferred.resolve(blogs);
         return deferred.promise;
       },
       getBlog: function (id) {
