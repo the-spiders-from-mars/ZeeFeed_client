@@ -3,6 +3,10 @@
 .imageClass{
   width:20px;
 }
+.zeefeed-theme{
+  background-color: #ff6900;
+  color: white;
+}
 .zeefeed-background-grey{
   background: #fafafa;
 }

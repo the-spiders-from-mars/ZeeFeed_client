@@ -29,10 +29,11 @@ angular.module('ctrl.blog', [])
       }, 1000);
     };
   })
-  .controller('BlogCtrl', function($scope, $stateParams, $state, Blogs) {
+  .controller('BlogCtrl', function($scope, $stateParams, $state, $sce, Blogs) {
     var id = $stateParams.blogId;
     Blogs.getBlog(id).then(function (blog) {
       $scope.blog = blog;
+      $scope.blog.content = $scope.blog.content.replace("^width=\"\d{0}\"", "width=\"100%\"");
     },function (error) {
       alert(error)
     });
@@ -43,7 +44,7 @@ angular.module('ctrl.blog', [])
   .controller('OriginBlogCtrl', function($scope, $stateParams, $sce, Blogs) {
     var id = $stateParams.blogId;
     Blogs.getBlog(id).then(function (blog) {
-      $scope.trustUrl = $sce.trustAsResourceUrl(blog.url);;
+      $scope.trustUrl = $sce.trustAsResourceUrl(blog.url);
     },function (error) {
       alert(error)
     });
