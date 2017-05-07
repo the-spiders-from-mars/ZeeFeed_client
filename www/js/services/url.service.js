@@ -11,7 +11,8 @@ angular.module('service.url', [])
       login: "login",
       register: "register",
       tag: "tag",
-      blog: "blog"
+      blog: "blog",
+      source: "source"
     };
 
     return{
@@ -27,8 +28,11 @@ angular.module('service.url', [])
       tag: function(userName){
         return urls.hp+"/"+urls.tag+"?userName="+userName;
       },
-      blog: function(){
-        return urls.hp+"/"+urls.blog;
+      blog: function(userName,tagName){
+        return urls.hp+"/"+urls.blog+"?userName="+userName+"&tagName="+tagName;
+      },
+      source: function(){
+        return urls.hp+"/"+urls.source;
       }
     }
   });

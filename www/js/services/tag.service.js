@@ -6,13 +6,13 @@ angular.module('service.tag', [])
 
   .factory('Tags', function($q,$http,Login,Urls) {
 
-    var tags;
+    var tags,rawTags;
 
     function raw2Tags(raw){
       raw.sort(function(a,b){
         return(a.name.localeCompare(b.name));
       });
-      raw.push({tagName:"$$$",tagCounter:0});
+      raw.push({tagName:"$end",tagCounter:0});
       tags=[];
       var i,lasti=0,lastfl=raw[0].tagName.charAt(0).toUpperCase();
       for (i=1;i<raw.length;i++){
@@ -38,12 +38,19 @@ angular.module('service.tag', [])
         }
         var tagUrl=Urls.tag(Login.getUser().userName);
         $http({method:"GET",url:tagUrl}).then(function(ret){
+          rawTags=ret.data;
+          rawTags.sort(function(a,b){
+            return(b.tagCounter-a.tagCounter);
+          });
           raw2Tags(ret.data);
           deferred.resolve(tags);
         },function(){
           deferred.reject();
         });
         return deferred.promise;
+      },
+      raw: function() {
+        return rawTags;
       }
     }
   });
