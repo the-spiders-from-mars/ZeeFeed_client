@@ -33,7 +33,7 @@ angular.module('ctrl.blog', [])
     var id = $stateParams.blogId;
     Blogs.getBlog(id).then(function (blog) {
       $scope.blog = blog;
-      $scope.blog.content = $scope.blog.content.replace("^width=\"\d{0}\"", "width=\"100%\"");
+      $scope.blog.content = $scope.blog.content.replace(/width="(\d{0,4})"/g, 'width=\"100%\"').replace(/height="(\d{0,4})"/g, "");
     },function (error) {
       alert(error)
     });

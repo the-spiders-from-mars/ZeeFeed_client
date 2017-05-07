@@ -2,5 +2,4 @@
  * Created by duocai on 2017/5/7.
  */
 
-var str = 'width="960"drt3453453453';
-console.log(str.replace(new RegExp('width=\\"(\d{0,})\\"',"gm"), "width=\"100%\""));
+console.log(str.replace(/width="(\d{0,4})"/g, 'width=\"100%\"'));
