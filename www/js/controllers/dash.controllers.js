@@ -7,18 +7,22 @@ angular.module('ctrl.dash', [])
   .controller('DashCtrl', function($scope, $ionicModal, $timeout, $interval, $state, Tags, Login) {
 
     $scope.tags = [];
+    $scope.raw = [];
+
     Tags.all().then(function (tags) {
       $scope.tags = tags;
+      $scope.raw = Tags.raw();
       $scope.maxCounter=function(){
         var maxCounter=1;
-        for(var i = 0; i < $scope.tags.length; i++) {
-          for (var j = 0; j < $scope.tags[i].tagList.length; j++)
-            if (maxCounter<$scope.tags[i].tagList[j].tagCounter){
-              maxCounter=$scope.tags[i].tagList[j].tagCounter;
+        for (var i=0;i<$scope.raw.length;i++) {
+            if (maxCounter<$scope.raw[i].tagCounter){
+              maxCounter=$scope.raw[i].tagCounter;
             }
         }
         return maxCounter;
       }();
+      createChart();
+      $interval(createChart ,10000);
     },function (error) {
       alert(error)
     });
@@ -81,6 +85,7 @@ angular.module('ctrl.dash', [])
     $scope.goSettings = function () {
       $state.go('settings');
     };
+
     //Buuble Chart BEGIN
 
     $scope.options = {
@@ -104,28 +109,51 @@ angular.module('ctrl.dash', [])
       }
     };
 
-
-    // createChart();
-    $interval(createChart ,2000);
+    //createChart();
+    //$interval(createChart ,10000);
 
     function createChart () {
       $scope.data = [];
-      for(var i = 0; i < $scope.tags.length; i++) {
-        for (var j = 0; j < $scope.tags[i].tagList.length; j++)
-          $scope.data.push([{
+      var i;
+      for (i=0;i<$scope.raw.length&&i<10;i++) {
+        $scope.data.push([{
+          x: randomScalingFactor(),
+          y: randomScalingFactor(),
+          r: generateRadius($scope.raw[i].tagCounter)
+        }]);
+        while (true) {
+          var flag=true;
+          for (var j = 0; j < i; j++) {
+            var x1=$scope.data[i][0].x;
+            var x2=$scope.data[j][0].x;
+            var y1=$scope.data[i][0].y;
+            var y2=$scope.data[j][0].y;
+            var r1=$scope.data[i][0].r;
+            var r2=$scope.data[j][0].r;
+            var dis=(x1-x2)*(x1-x2)+(y1-y2)*(y1-y2);
+            dis=Math.sqrt(dis);
+            if (dis < r1 + r2 - 5) {
+              flag=false;
+              break;
+            }
+          }
+          if (flag)
+            break;
+          $scope.data[i]=[{
             x: randomScalingFactor(),
             y: randomScalingFactor(),
-            r: generateRadius($scope.tags[i].tagList[j].tagCounter)
-          }]);
+            r: generateRadius($scope.raw[i].tagCounter)
+          }]
+        }
       }
     }
 
     function randomScalingFactor () {
-      return (Math.random() > 0.5 ? 1.0 : -1.0) * Math.round(Math.random() * 100);
+      return (Math.random() > 0.5 ? 1.0 : -1.0) * Math.round(Math.random() * 90);
     }
 
     function generateRadius (counter) {
-      return counter/$scope.maxCounter*(Math.random() * 10 + 20);
+      return Math.round(counter/$scope.maxCounter*(Math.random() * 10 + 30));
     }
 
     //Buuble Chart END

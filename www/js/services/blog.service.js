@@ -4,7 +4,7 @@
 
 angular.module('service.blog', [])
 
-  .factory('Blogs', function($q,$http,Urls) {
+  .factory('Blogs', function($q,$http,Login,Urls) {
 
     var blogs;
 
@@ -15,9 +15,13 @@ angular.module('service.blog', [])
           deferred.resolve(blogs);
           return deferred.promise;
         }
-        var blogUrl=Urls.blog()+"?tagName="+tagName;
+        var blogUrl=Urls.blog(tagName,Login.getUser().userName);
         $http({method:"GET",url:blogUrl}).then(function(ret){
           blogs=ret.data;
+          for (var i=0;i<blogs.length;i++){
+            blogs[i].id=blogs[i]["_id"];
+            blogs[i].image="img/100.png";
+          }
           deferred.resolve(blogs);
         },function(){
           deferred.reject();
@@ -25,13 +29,19 @@ angular.module('service.blog', [])
         return deferred.promise;
       },
       getBlog: function (id) {
+        var blogChosen;
+        for (var i=0;i<blogs.length;i++){
+          if (blogs[i].id==id){
+            blogChosen=blogs[i];
+            break;
+          }
+        }
         var deferred=$q.defer();
-        var blogUrl=Urls.blog()+"/"+id;
-        $http({method:"GET",url:blogUrl}).then(function(ret){
-          deferred.resolve(ret.data);
-        },function(){
+        if (blogChosen!=undefined){
+          deferred.resolve(blogChosen);
+        }else{
           deferred.reject();
-        });
+        }
         return deferred.promise;
       }
     }
