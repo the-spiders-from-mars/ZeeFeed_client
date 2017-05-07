@@ -22,7 +22,7 @@ angular.module('ctrl.dash', [])
         return maxCounter;
       }();
       createChart();
-      //$interval(createChart ,10000);
+      $interval(createChart ,3000);
     },function (error) {
       alert(error)
     });

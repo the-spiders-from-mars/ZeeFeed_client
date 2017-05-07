@@ -21,7 +21,7 @@ angular.module('service.blog', [])
           if (blogs[i]["_id"]!=undefined)
             blogs[i].id=blogs[i]["_id"];
           blogs[i].url=blogs[i].link;
-          blogs[i].image="img/10"+Math.round(Math.random()*5)+".png";
+          blogs[i].image="img/10"+Math.floor(Math.random()*5)+".png";
         }
         deferred.resolve(blogs);
         return deferred.promise;

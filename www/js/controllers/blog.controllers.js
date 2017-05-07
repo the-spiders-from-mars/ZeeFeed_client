@@ -44,6 +44,7 @@ angular.module('ctrl.blog', [])
   .controller('OriginBlogCtrl', function($scope, $stateParams, $sce, Blogs) {
     var id = $stateParams.blogId;
     Blogs.getBlog(id).then(function (blog) {
+      console.log(blog.url);
       $scope.trustUrl = $sce.trustAsResourceUrl(blog.url);
     },function (error) {
       alert(error)

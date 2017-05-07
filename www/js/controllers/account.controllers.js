@@ -75,6 +75,10 @@ angular.module('ctrl.account', [])
     $scope.providerModal.hide();
   };
   $scope.doAddProvider = function () {
+    if ($scope.newProvider.name==="" || $scope.newProvider.address===""){
+      alert("源错误");
+      return;
+    }
     var provider = {
       name: $scope.newProvider.name,
       enable: true,
