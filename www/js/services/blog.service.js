@@ -11,10 +11,10 @@ angular.module('service.blog', [])
     return {
       getBlogs: function (tagName) {
         var deferred=$q.defer();
-        if (blogs!=undefined) {
-          deferred.resolve(blogs);
-          return deferred.promise;
-        }
+        // if (blogs!=undefined) {
+        //   deferred.resolve(blogs);
+        //   return deferred.promise;
+        // }
         blogs=Offline.blog(tagName);
         for (var i=0;i<blogs.length;i++){
           blogs[i].id=i;

@@ -22,6 +22,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     }
   });
 })
+
 .config(function($ionicConfigProvider) {
 
   //使得导航栏在不同平台中适配标准

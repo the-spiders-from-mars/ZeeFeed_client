@@ -20,6 +20,7 @@ angular.module('starter.routers', ['routers.account'])
     })
     .state('tagDetail', {
       url: '/tag/:tagName',
+      cache: false,
       controller: 'TagCtrl',
       templateUrl: 'templates/blog/detail.tag.html'
     })
