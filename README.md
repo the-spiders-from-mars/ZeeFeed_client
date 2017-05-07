@@ -47,6 +47,7 @@ body： userName:string
           tags:[string,...],
           summary: string,
           link: string(url)
+          read: boolean
         }
 ```
 5.source （用户订阅的所有源）
@@ -68,6 +69,14 @@ body： userName:string
 body： {userName:string,sources:[string(url),string(url)]}
 返回： true | false :boolean
 ```
+7. read/unread (标记为读过)
+```
+接口： /blog
+方法： POST
+body: {blogId:string, read:boolean}
+返回：true | false
+```
+
 ## service 数据定义
 
 1. Tags
